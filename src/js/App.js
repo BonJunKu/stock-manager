@@ -49,8 +49,8 @@ export default class App {
             <h3>평균매수가: ${this.getAverage()} 원 / 주</h3>
             <h4>총매수금액: ${this.getSum()} 원</h4>
             <h4>총 보유량: ${this.getTotalCount()} 주</h4>
-            가격: <input class="priceInput" type="number" pattern="\d*"></input> 원<br />
-            수량: <input class="countInput" type="number" pattern="\d*"></input> 개<br />
+            가격: <input class="priceInput" inputmode="numeric" pattern="[0-9]*"></input> 원<br />
+            수량: <input class="countInput" inputmode="numeric" pattern="[0-9]*"></input> 개<br />
             <button class="addButton" data-index = "">입력</button>
             <ul>
             ${this.getStockById(this.state.stockId)
