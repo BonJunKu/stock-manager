@@ -12,9 +12,21 @@
       crossorigin
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css"
     />
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
     <main class="app"></main>
     <script src="src/js/index.js" type="module"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: '#da373d',
+            },
+          },
+        },
+      };
+    </script>
   </body>
 </html>
