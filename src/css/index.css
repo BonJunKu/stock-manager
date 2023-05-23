@@ -8,6 +8,8 @@
 
   --color-orange: #ebc45c;
   --color-orange-dark: #8e7533;
+
+  font-size: 16px;
 }
 
 body {
@@ -37,12 +39,12 @@ button {
 
 .topbar button:active {
   color: var(--color-orange-dark);
-  transition: all 0.1s;
+  transition: all 0.5s;
 }
 
 .topbar button:not(active) {
   opacity: 1;
-  transition: all 0.1s;
+  transition: all 0.5s;
 }
 
 h1 {
