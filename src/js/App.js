@@ -25,7 +25,7 @@ export default class App {
             <h1>보유 종목</h1>
             <input class="stockInput"></input>
             <button class="addStockButton">추가</button>
-            <ul>
+            <ul class="stock-list">
             ${this.state.stocks
               .sort((a, b) => {
                 if (a.id < b.id) return 1;
@@ -34,8 +34,8 @@ export default class App {
               .map(
                 (stock) =>
                   `
-                <li class="stockListItem" data-id=${stock.id}>
-                ${stock.name}&nbsp;<button class="deleteStockButton" data-id=${stock.id}>삭제</button>
+                <li class="stock-list-item" data-id=${stock.id}>
+                ${stock.name}&nbsp;<button class="delete-stock-button" data-id=${stock.id}>삭제</button>
                 </li>
                 `
               )
@@ -66,7 +66,7 @@ export default class App {
                         <span>${item.price}원</span>
                         <span>${item.count}개</span>
                         <input class="date" type="date" data-id=${item.id} value=${item.date}></input>
-                        <button class="deleteButton" data-id=${item.id}>삭제</button>
+                        <button class="delete-button" data-id=${item.id}>삭제</button>
                     </li>`
               )
               .join('')}
@@ -101,7 +101,7 @@ export default class App {
         }
       }
 
-      if (target.className === 'deleteButton') {
+      if (target.className === 'delete-button') {
         const newStock = {
           ...this.getStockById(this.state.stockId),
           items: [
@@ -139,12 +139,12 @@ export default class App {
         });
       }
 
-      if (target.className === 'stockListItem') {
+      if (target.className === 'stock-list-item') {
         this.setState({ ...this.state, stockId: target.dataset.id });
         this.navigate('item');
       }
 
-      if (target.className === 'deleteStockButton') {
+      if (target.className === 'delete-stock-button') {
         this.setState({
           ...this.state,
           stocks: this.state.stocks.filter(
