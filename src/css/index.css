@@ -32,7 +32,7 @@ button {
 .topbar button {
   color: var(--color-orange);
   font-size: 20px;
-  margin-right: 12px;
+  margin-right: 8px;
 }
 
 .topbar button:active {
@@ -46,7 +46,7 @@ button {
 }
 
 h1 {
-  font-size: 48px;
+  font-size: 40px;
   margin: 0 0 12px 12px;
   font-weight: 600;
 }
