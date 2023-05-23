@@ -121,6 +121,7 @@ input {
   color: white;
   font-size: 28px;
   padding-bottom: 6px;
+  border-radius: 0;
 }
 
 input:focus {
