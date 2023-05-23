@@ -221,9 +221,8 @@ export default class App {
         key === 'Enter' &&
         document.querySelector('.stockInput').value
       ) {
-        setTimeout(() => {
-          document.querySelector('.home-drawer').classList.toggle('open');
-        }, 100);
+        document.querySelector('.stockInput').blur();
+        document.querySelector('.home-drawer').classList.toggle('open');
         setTimeout(() => {
           this.setState({
             ...this.state,
