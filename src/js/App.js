@@ -42,6 +42,7 @@ export default class App {
               )
               .join('')}
             </ul>
+            <div class="bottombar-transparent"></div>
             <div class="bottombar">
             <div class="spacing"></div><button class="addStockButton home-drawer-button">
                 <img src="src/images/pen-and-paper.svg" class="home-drawer-button"></img>
