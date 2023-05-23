@@ -32,16 +32,19 @@ button {
   background-color: transparent;
 }
 
+.spacing {
+  flex: 1;
+}
+
 .topbar {
   display: flex;
   margin: 12px 0 12px 0;
-  justify-content: right;
 }
 
 .topbar button {
   color: var(--color-orange);
   font-size: 20px;
-  margin-right: 8px;
+  margin: 0 8px 0 8px;
 }
 
 .topbar button:active {
@@ -110,8 +113,8 @@ input::selection {
   position: fixed;
   background-color: var(--color-gray-drawer);
   left: 0;
-  bottom: -100vh;
-  height: 100vh;
+  bottom: -99vh;
+  height: 99vh;
   width: 100%;
   transition: bottom 0.3s ease;
 }

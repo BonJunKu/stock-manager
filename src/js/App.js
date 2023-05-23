@@ -20,10 +20,10 @@ export default class App {
     if (this.state.page === 'home') {
       this.$target.innerHTML = `
             <div class="topbar">
+            <span class="spacing"></span>
               <button>편집</button>
             </div>
             <h1>보유 종목</h1>
-            <input class="stockInput"></input>
             <button class="addStockButton home-drawer-button">추가</button>
             <ul class="stock-list">
             ${this.state.stocks
@@ -44,6 +44,10 @@ export default class App {
               .join('')}
             </ul>
             <div class="home-drawer">
+            <div class="topbar">
+              <button class="home-drawer-cancel topbar">취소</button>
+            </div>
+            <input class="stockInput"></input>
             </div>
             `;
     }
@@ -133,6 +137,10 @@ export default class App {
         document.querySelector('.home-drawer').classList.toggle('open');
       }
 
+      if (target.className.includes('home-drawer-cancel')) {
+        document.querySelector('.home-drawer').classList.toggle('open');
+      }
+
       if (target.className === 'addStockButton') {
         this.setState({
           ...this.state,
@@ -200,17 +208,20 @@ export default class App {
         key === 'Enter' &&
         document.querySelector('.stockInput').value
       ) {
-        this.setState({
-          ...this.state,
-          stocks: [
-            ...this.state.stocks,
-            {
-              id: this.getNewId(),
-              name: document.querySelector('.stockInput').value,
-              items: [],
-            },
-          ],
-        });
+        document.querySelector('.home-drawer').classList.toggle('open');
+        setTimeout(() => {
+          this.setState({
+            ...this.state,
+            stocks: [
+              ...this.state.stocks,
+              {
+                id: this.getNewId(),
+                name: document.querySelector('.stockInput').value,
+                items: [],
+              },
+            ],
+          });
+        }, 300);
       }
     });
 
