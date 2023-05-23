@@ -165,7 +165,7 @@ export default class App {
               },
             ],
           });
-        }, 500);
+        }, 300);
       }
 
       if (
@@ -234,7 +234,7 @@ export default class App {
               },
             ],
           });
-        }, 500);
+        }, 300);
       }
     });
 
