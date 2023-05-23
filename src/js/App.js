@@ -19,8 +19,10 @@ export default class App {
   render() {
     if (this.state.page === 'home') {
       this.$target.innerHTML = `
-            <h1>주식 평균단가 계산기</h1>
-            <h3>종목을 추가해주세요. ex) SK하이닉스</h3>
+            <div class="topbar">
+              <button>편집</button>
+            </div>
+            <h1>보유 종목</h1>
             <input class="stockInput"></input>
             <button class="addStockButton">추가</button>
             <ul>

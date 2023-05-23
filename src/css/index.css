@@ -3,4 +3,49 @@
     BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
     'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+
+  color: white;
+
+  --color-orange: #ebc45c;
+}
+
+body {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  border: 0;
+  background-color: transparent;
+}
+
+.topbar {
+  display: flex;
+  margin-top: 12px;
+  justify-content: right;
+}
+
+.topbar button {
+  color: var(--color-orange);
+  font-size: 20px;
+  margin-right: 12px;
+}
+
+.topbar button:active {
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.topbar button:not(active) {
+  opacity: 1;
+  transition: all 0.5s;
+}
+
+h1 {
+  font-size: 32px;
+  margin: 0 0 12px 12px;
+  font-weight: 600;
 }
