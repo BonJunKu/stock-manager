@@ -97,6 +97,12 @@ h1 {
   font-weight: 600;
 }
 
+h2 {
+  font-size: 32px;
+  margin: 52px 0 42px 12px;
+  font-weight: 400;
+}
+
 ul {
   list-style: none;
   padding-left: 0;
@@ -104,18 +110,26 @@ ul {
 
 textarea,
 input {
+  width: calc(100% - 24px);
   user-select: text;
   -webkit-user-select: text;
   padding: 0;
   border: none;
   background: none;
-  background-color: var(--color-gray);
   margin: 0 12px 0 12px;
+  border-bottom: 1px solid var(--color-gray);
+  color: white;
+  font-size: 24px;
 }
 
-input::selection {
-  background-color: transparent;
-  color: inherit;
+input:focus {
+  outline: none;
+  border-bottom: 1px solid var(--color-orange);
+  transition: all 0.5s ease;
+}
+
+input::placeholder {
+  color: var(--color-gray);
 }
 
 .stock-list-item:first-child {

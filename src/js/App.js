@@ -45,16 +45,19 @@ export default class App {
             </ul>
             <div class="bottombar-transparent"></div>
             <div class="bottombar">
-            <div class="spacing"></div><button class="addStockButton home-drawer-button">
+            <div class="spacing"></div><button class="home-drawer-button">
                 <img src="src/images/pen-and-paper.svg" class="home-drawer-button"></img>
             </button>
             </div>
             <div class="home-drawer">
             <div class="topbar home-drawer__topbar">
             <button class="home-drawer-cancel">취소</button>
+            <div class="spacing"></div>
+            <button class="add-stock-button">완료</button>
             </div>
             <div class="topbar-transparent"></div>
-            <input class="stockInput"></input>
+            <h2>어떤 종목을 추가할까요?</h2>
+            <input type="text" class="stockInput" placeholder="종목명 입력"></input>
             </div>
             `;
     }
@@ -148,18 +151,21 @@ export default class App {
         document.querySelector('.home-drawer').classList.toggle('open');
       }
 
-      if (target.className === 'addStockButton') {
-        this.setState({
-          ...this.state,
-          stocks: [
-            ...this.state.stocks,
-            {
-              id: this.getNewId(),
-              name: document.querySelector('.stockInput').value,
-              items: [],
-            },
-          ],
-        });
+      if (target.className === 'add-stock-button') {
+        document.querySelector('.home-drawer').classList.toggle('open');
+        setTimeout(() => {
+          this.setState({
+            ...this.state,
+            stocks: [
+              ...this.state.stocks,
+              {
+                id: this.getNewId(),
+                name: document.querySelector('.stockInput').value,
+                items: [],
+              },
+            ],
+          });
+        }, 400);
       }
 
       if (
