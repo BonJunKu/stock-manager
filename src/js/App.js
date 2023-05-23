@@ -35,7 +35,7 @@ export default class App {
                 (stock) =>
                   `
                 <li class="stock-list-item" data-id=${stock.id}>
-                <span>${stock.name}</span>
+                <span class="stock-list-item-title" data-id=${stock.id}>${stock.name}</span>
                 &nbsp;
                 <button class="delete-stock-button" data-id=${stock.id}>삭제</button>
                 </li>
@@ -141,7 +141,10 @@ export default class App {
         });
       }
 
-      if (target.className === 'stock-list-item') {
+      if (
+        target.className === 'stock-list-item' ||
+        target.className === 'stock-list-item-title'
+      ) {
         this.setState({ ...this.state, stockId: target.dataset.id });
         this.navigate('item');
       }
