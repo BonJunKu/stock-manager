@@ -10,6 +10,10 @@
   --color-orange-dark: #8e7533;
 
   font-size: 16px;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 body {
@@ -51,4 +55,10 @@ h1 {
   font-size: 40px;
   margin: 0 0 12px 12px;
   font-weight: 600;
+}
+
+textarea,
+input {
+  user-select: text;
+  -webkit-user-select: text;
 }
