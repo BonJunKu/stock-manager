@@ -35,7 +35,9 @@ export default class App {
                 (stock) =>
                   `
                 <li class="stock-list-item" data-id=${stock.id}>
-                ${stock.name}&nbsp;<button class="delete-stock-button" data-id=${stock.id}>삭제</button>
+                <span>${stock.name}</span>
+                &nbsp;
+                <button class="delete-stock-button" data-id=${stock.id}>삭제</button>
                 </li>
                 `
               )
