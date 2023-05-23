@@ -113,8 +113,8 @@ input::selection {
   position: fixed;
   background-color: var(--color-gray-drawer);
   left: 0;
-  bottom: -99vh;
-  height: 99vh;
+  bottom: -100vh;
+  height: 100vh;
   width: 100%;
   transition: bottom 0.3s ease;
 }
