@@ -24,7 +24,6 @@ export default class App {
               <button>편집</button>
             </div>
             <h1>보유 종목</h1>
-            <button class="addStockButton home-drawer-button">추가</button>
             <ul class="stock-list">
             ${this.state.stocks
               .sort((a, b) => {
@@ -43,6 +42,11 @@ export default class App {
               )
               .join('')}
             </ul>
+            <div class="bottombar">
+            <div class="spacing"></div><button class="addStockButton home-drawer-button">
+                <img src="src/images/pen-and-paper.svg" class="home-drawer-button"></img>
+            </button>
+            </div>
             <div class="home-drawer">
             <div class="topbar">
               <button class="home-drawer-cancel topbar">취소</button>
@@ -221,7 +225,7 @@ export default class App {
               },
             ],
           });
-        }, 300);
+        }, 400);
       }
     });
 

@@ -41,6 +41,19 @@ button {
   margin: 12px 0 12px 0;
 }
 
+.bottombar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding-right: 12px;
+  padding-bottom: 12px;
+}
+
 .topbar button {
   color: var(--color-orange);
   font-size: 20px;
@@ -102,6 +115,10 @@ input::selection {
   padding: 12px 24px 12px 24px;
   border-top: 0.5px solid var(--color-split-line);
   border-bottom: 0.5px solid var(--color-split-line);
+}
+
+.stock-list-item:active {
+  background-color: var(--color-gray-drawer);
 }
 
 .stock-list-item span {
