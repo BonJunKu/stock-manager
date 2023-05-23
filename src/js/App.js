@@ -23,6 +23,7 @@ export default class App {
             <span class="spacing"></span>
               <button>편집</button>
             </div>
+            <div class="topbar-transparent"></div>
             <h1>보유 종목</h1>
             <ul class="stock-list">
             ${this.state.stocks
@@ -49,9 +50,10 @@ export default class App {
             </button>
             </div>
             <div class="home-drawer">
-            <div class="topbar">
-              <button class="home-drawer-cancel topbar">취소</button>
+            <div class="topbar home-drawer__topbar">
+            <button class="home-drawer-cancel">취소</button>
             </div>
+            <div class="topbar-transparent"></div>
             <input class="stockInput"></input>
             </div>
             `;
