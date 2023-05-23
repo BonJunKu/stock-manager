@@ -24,7 +24,7 @@ export default class App {
             </div>
             <h1>보유 종목</h1>
             <input class="stockInput"></input>
-            <button class="addStockButton">추가</button>
+            <button class="addStockButton home-drawer-button">추가</button>
             <ul class="stock-list">
             ${this.state.stocks
               .sort((a, b) => {
@@ -43,6 +43,8 @@ export default class App {
               )
               .join('')}
             </ul>
+            <div class="home-drawer">
+            </div>
             `;
     }
 
@@ -125,6 +127,10 @@ export default class App {
 
       if (target.className === 'homeButton') {
         this.navigate('home');
+      }
+
+      if (target.className.includes('home-drawer-button')) {
+        document.querySelector('.home-drawer').classList.toggle('open');
       }
 
       if (target.className === 'addStockButton') {
