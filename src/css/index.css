@@ -110,16 +110,17 @@ ul {
 
 textarea,
 input {
-  width: calc(100% - 24px);
+  width: calc(100% - 28px);
   user-select: text;
   -webkit-user-select: text;
   padding: 0;
   border: none;
   background: none;
-  margin: 0 12px 0 12px;
+  margin: 0 14px 0 14px;
   border-bottom: 1px solid var(--color-gray);
   color: white;
-  font-size: 24px;
+  font-size: 28px;
+  padding-bottom: 6px;
 }
 
 input:focus {
@@ -130,6 +131,8 @@ input:focus {
 
 input::placeholder {
   color: var(--color-gray);
+  font-size: 28px;
+  padding-bottom: 6px;
 }
 
 .stock-list-item:first-child {
