@@ -236,6 +236,13 @@ input.input-with-unit {
   caret-color: var(--color-orange);
 }
 
+input.input-with-unit:focus {
+  outline: none;
+  border-bottom: 1px solid var(--color-orange);
+  transition: all 0.5s ease;
+  caret-color: var(--color-orange);
+}
+
 .unit {
   font-size: 28px;
   font-weight: 200;
