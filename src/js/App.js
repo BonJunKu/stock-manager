@@ -48,7 +48,7 @@ export default class App {
                   `
                 <li class="stock-list-item" data-id=${stock.id}>
                 <span class="stock-list-item-title" data-id=${stock.id}>${stock.name}</span>
-                <div class="spacing"></div>`,
+                <div class="spacing"></div>&nbsp;`,
 
                   this.state.isEditing
                     ? `
@@ -87,8 +87,12 @@ export default class App {
 
     if (this.state.page === 'item') {
       this.$target.innerHTML = `
-            <button class = "homeButton">홈으로</button>
-            <h2>${this.getStockById(this.state.stockId).name}</h2>
+            <div class="topbar">
+                <button class="home-button">< 홈</button>
+                <div class="spacing"></div>
+            </div>
+            <div class="topbar-transparent"></div>
+            <h1>${this.getStockById(this.state.stockId).name}</h1>
             <h3>평균매수가: ${this.getAverage()} 원 / 주</h3>
             <h4>총매수금액: ${this.getSum()} 원</h4>
             <h4>총 보유량: ${this.getTotalCount()} 주</h4>
@@ -166,7 +170,7 @@ export default class App {
         this.setState({ ...this.state, isEditing: !this.state.isEditing });
       }
 
-      if (target.className === 'homeButton') {
+      if (target.className === 'home-button') {
         this.navigate('home');
       }
 

@@ -82,6 +82,12 @@ button {
   margin: 0 8px 0 8px;
 }
 
+.home-button {
+  color: var(--color-orange);
+  font-size: 20px;
+  margin: 0 8px 0 8px;
+}
+
 .topbar button:active {
   color: var(--color-orange-dark);
   transition: all 0.2s;
