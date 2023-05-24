@@ -105,7 +105,7 @@ export default class App {
                   <span class="column-price">매수가(원)</span>
                   <span class="column-count">수량(개)</span>
                   <span class="column-memo">메모</span>
-                  <button ></button>
+                  <button class="xbutton" ></button>
                 </div>`
                 : ''
             }
@@ -126,7 +126,7 @@ export default class App {
                         <input class="date column-memo" data-id=${
                           item.id
                         } value=${item.date}></input>
-                        <button class="delete-button" data-id=${
+                        <button class="delete-button xbutton" data-id=${
                           item.id
                         }>✕</button>
                     </li>`
@@ -188,7 +188,7 @@ export default class App {
         }
       }
 
-      if (target.className === 'delete-button') {
+      if (target.className.includes('delete-button')) {
         const newStock = {
           ...this.getStockById(this.state.stockId),
           items: [

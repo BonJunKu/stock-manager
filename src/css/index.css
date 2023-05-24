@@ -282,3 +282,7 @@ input.input-with-unit:focus {
   text-align: center;
   font-size: 20px;
 }
+
+.xbutton {
+  width: 10%;
+}
