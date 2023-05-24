@@ -6,13 +6,23 @@ export default class App {
     this.$target = target;
     //items: {id:number, price: number, count: number, date: 'yyyy-mm-dd'}[]
     //stocks: {id: number, name: string, items: {id:number, price: number, count: number, date: 'yyyy-mm-dd'}[]}[]
-    this.setState({ stocks: [], page: 'home', stockId: -1, isEditing: false });
+    if (localStorage.getItem('state')) {
+      this.setState({ ...JSON.parse(localStorage.getItem('state')) });
+    } else {
+      this.setState({
+        stocks: [],
+        page: 'home',
+        stockId: -1,
+        isEditing: false,
+      });
+    }
     this.render();
     this.setEvent();
   }
 
   setState(nextState) {
     this.state = nextState;
+    localStorage.setItem('state', JSON.stringify(this.state));
     this.render();
   }
 
