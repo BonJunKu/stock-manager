@@ -250,6 +250,7 @@ input.input-with-unit:focus {
 
 .stock-column-title {
   display: flex;
+  width: 100%;
   border-bottom: 1px solid white;
   margin-bottom: 10px;
 }
@@ -261,6 +262,7 @@ input.input-with-unit:focus {
 .stock-row {
   display: flex;
   font-weight: 200;
+  margin-bottom: 10px;
 }
 
 .column-price {

@@ -105,6 +105,7 @@ export default class App {
                   <span class="column-price">매수가(원)</span>
                   <span class="column-count">수량(개)</span>
                   <span class="column-memo">메모</span>
+                  <button ></button>
                 </div>`
                 : ''
             }
