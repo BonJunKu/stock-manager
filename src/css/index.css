@@ -188,6 +188,6 @@ input::placeholder {
   transition: opacity 1s ease;
 }
 
-.delete-stock-button.show {
-  opacity: 1;
+.delete-stock-button.blind {
+  opacity: 0;
 }

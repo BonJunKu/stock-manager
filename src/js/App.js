@@ -56,7 +56,9 @@ export default class App {
                   <img src="src/images/delete-button.svg" class="delete-stock-button" data-id=${stock.id}></img>
                   </button>`
                     : `
-                   `,
+                    <button class="delete-stock-button blind">
+                    <img src="src/images/delete-button.svg" class="delete-stock-button blind"></img>
+                    </button>`,
                   `
                 </li>
                 `,
@@ -176,7 +178,10 @@ export default class App {
         document.querySelector('.home-drawer').classList.toggle('open');
       }
 
-      if (target.className === 'add-stock-button') {
+      if (
+        target.className === 'add-stock-button' &&
+        document.querySelector('.stockInput').value.length > 0
+      ) {
         document.querySelector('.home-drawer').classList.toggle('open');
         setTimeout(() => {
           this.setState({
@@ -244,7 +249,7 @@ export default class App {
       if (
         this.state.page === 'home' &&
         key === 'Enter' &&
-        document.querySelector('.stockInput').value
+        document.querySelector('.stockInput').value.length > 0
       ) {
         document.querySelector('.stockInput').blur();
         document.querySelector('.home-drawer').classList.toggle('open');
