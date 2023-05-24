@@ -1,3 +1,5 @@
+import addCommasToNumber from './addCommasToNumber.js';
+
 export default class App {
   $target;
   state;
@@ -79,7 +81,7 @@ export default class App {
             <button class="add-stock-button">완료</button>
             </div>
             <div class="topbar-transparent"></div>
-            <h2>어떤 종목을 추가할까요?</h2>
+            <h2 class="question">어떤 종목을 추가할까요?</h2>
             <input type="text" class="stockInput" placeholder="종목명 입력"></input>
             </div>
             `;
@@ -93,13 +95,19 @@ export default class App {
             </div>
             <div class="topbar-transparent"></div>
             <h1>${this.getStockById(this.state.stockId).name}</h1>
-            <h3>평균매수가: ${this.getAverage()} 원 / 주</h3>
-            <h4>총매수금액: ${this.getSum()} 원</h4>
-            <h4>총 보유량: ${this.getTotalCount()} 주</h4>
-            가격: <input class="priceInput" inputmode="numeric" pattern="[0-9]*"></input> 원<br />
-            수량: <input class="countInput" inputmode="numeric" pattern="[0-9]*"></input> 개<br />
-            <button class="addButton" data-index = "">입력</button>
+            <h2>${addCommasToNumber(this.getAverage())} 원/주</h2>
+            <h3>매입금액: ${addCommasToNumber(this.getSum())} 원</h3>
+            <h3>보유수량: ${addCommasToNumber(this.getTotalCount())} 주</h3>
             <ul>
+            ${
+              this.getStockById(this.state.stockId).items.length > 0
+                ? `<div class="stock-column-title">
+                  <span class="column-price">매수가(원)</span>
+                  <span class="column-count">수량(개)</span>
+                  <span class="column-memo">메모</span>
+                </div>`
+                : ''
+            }
             ${this.getStockById(this.state.stockId)
               .items.sort((a, b) => {
                 if (a.id < b.id) return 1;
@@ -107,15 +115,45 @@ export default class App {
               })
               .map(
                 (item) =>
-                  `<li>
-                        <span>${item.price}원</span>
-                        <span>${item.count}개</span>
-                        <input class="date" type="date" data-id=${item.id} value=${item.date}></input>
-                        <button class="delete-button" data-id=${item.id}>삭제</button>
+                  `<li class="stock-row">
+                        <span class="column-price">${addCommasToNumber(
+                          item.price
+                        )}</span>
+                        <span class="column-count">${addCommasToNumber(
+                          item.count
+                        )}</span>
+                        <input class="date column-memo" data-id=${
+                          item.id
+                        } value=${item.date}></input>
+                        <button class="delete-button" data-id=${
+                          item.id
+                        }>✕</button>
                     </li>`
               )
               .join('')}
             </ul>
+            <div class="bottombar-transparent"></div>
+            <div class="bottombar">
+            <div class="spacing"></div><button class="item-drawer-button">
+                <img src="src/images/pen-and-paper.svg" class="item-drawer-button"></img>
+            </button>
+            <div class="item-drawer">
+            <div class="topbar item-drawer__topbar">
+            <button class="item-drawer-cancel">취소</button>
+            <div class="spacing"></div>
+            <button class="addButton">완료</button>
+            </div>
+            <div class="topbar-transparent"></div>
+            <h2 class="question">얼마에 매수하셨나요?</h2>
+            <div class="input-with-unit">
+            <input class="input-with-unit priceInput" placeholder="매수가 입력"></input><span class="unit">원</span>
+            </div>
+            <h2 class="question">몇 개 매수하셨나요?</h2>
+            <div class="input-with-unit">
+            <input class="input-with-unit countInput" placeholder="수량 입력"></input><span class="unit">개</span>
+            </div>
+            </div>
+            </div>
             `;
     }
   }
@@ -127,22 +165,25 @@ export default class App {
         const count = document.querySelector('.countInput').value;
 
         if (price && count) {
-          const newStock = {
-            ...this.getStockById(this.state.stockId),
-            items: [
-              ...this.getStockById(this.state.stockId).items,
-              { id: this.getNewId(), price, count, date: '' },
-            ],
-          };
-          this.setState({
-            ...this.state,
-            stocks: [
-              ...this.state.stocks.filter(
-                (stock) => Number(stock.id) !== Number(this.state.stockId)
-              ),
-              newStock,
-            ],
-          });
+          document.querySelector('.item-drawer').classList.toggle('open');
+          setTimeout(() => {
+            const newStock = {
+              ...this.getStockById(this.state.stockId),
+              items: [
+                ...this.getStockById(this.state.stockId).items,
+                { id: this.getNewId(), price, count, date: '' },
+              ],
+            };
+            this.setState({
+              ...this.state,
+              stocks: [
+                ...this.state.stocks.filter(
+                  (stock) => Number(stock.id) !== Number(this.state.stockId)
+                ),
+                newStock,
+              ],
+            });
+          }, 300);
         }
       }
 
@@ -180,6 +221,14 @@ export default class App {
 
       if (target.className.includes('home-drawer-cancel')) {
         document.querySelector('.home-drawer').classList.toggle('open');
+      }
+
+      if (target.className.includes('item-drawer-cancel')) {
+        document.querySelector('.item-drawer').classList.toggle('open');
+      }
+
+      if (target.className.includes('item-drawer-button')) {
+        document.querySelector('.item-drawer').classList.toggle('open');
       }
 
       if (
@@ -274,7 +323,7 @@ export default class App {
     });
 
     document.addEventListener('change', ({ target }) => {
-      if (target.className === 'date') {
+      if (target.className.includes('date')) {
         const newStock = {
           ...this.getStockById(this.state.stockId),
           items: this.getStockById(this.state.stockId).items.map((item) => {
