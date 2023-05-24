@@ -252,6 +252,7 @@ input.input-with-unit:focus {
   display: flex;
   width: 100%;
   border-bottom: 1px solid white;
+  margin-top: 20px;
   margin-bottom: 10px;
 }
 
