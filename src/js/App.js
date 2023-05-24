@@ -6,7 +6,7 @@ export default class App {
     this.$target = target;
     //items: {id:number, price: number, count: number, date: 'yyyy-mm-dd'}[]
     //stocks: {id: number, name: string, items: {id:number, price: number, count: number, date: 'yyyy-mm-dd'}[]}[]
-    this.setState({ stocks: [], page: 'home', stockId: -1 });
+    this.setState({ stocks: [], page: 'home', stockId: -1, isEditing: false });
     this.render();
     this.setEvent();
   }
@@ -21,7 +21,9 @@ export default class App {
       this.$target.innerHTML = `
             <div class="topbar">
             <span class="spacing"></span>
-              <button>편집</button>
+              <button class="home-edit-button">${
+                this.state.isEditing ? '완료' : '편집'
+              }</button>
             </div>
             <div class="topbar-transparent"></div>
             <h1>보유 종목</h1>
@@ -31,15 +33,24 @@ export default class App {
                 if (a.id < b.id) return 1;
                 else return -1;
               })
-              .map(
-                (stock) =>
+              .map((stock) =>
+                [
                   `
                 <li class="stock-list-item" data-id=${stock.id}>
                 <span class="stock-list-item-title" data-id=${stock.id}>${stock.name}</span>
-                &nbsp;
-                <button class="delete-stock-button" data-id=${stock.id}>삭제</button>
+                <div class="spacing"></div>`,
+
+                  this.state.isEditing
+                    ? `
+                  <button class="delete-stock-button" data-id=${stock.id}>
+                  <img src="src/images/delete-button.svg" class="delete-stock-button" data-id=${stock.id}></img>
+                  </button>`
+                    : `
+                   `,
+                  `
                 </li>
-                `
+                `,
+                ].join('')
               )
               .join('')}
             </ul>
@@ -137,6 +148,10 @@ export default class App {
             newStock,
           ],
         });
+      }
+
+      if (target.className === 'home-edit-button') {
+        this.setState({ ...this.state, isEditing: !this.state.isEditing });
       }
 
       if (target.className === 'homeButton') {
