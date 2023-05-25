@@ -62,8 +62,8 @@ export default class App {
                   <img src="src/images/delete-button.svg" class="delete-stock-button" data-id=${stock.id}></img>
                   </button>`
                     : `
-                    <button class="delete-stock-button blind">
-                    <img src="src/images/delete-button.svg" class="delete-stock-button blind"></img>
+                    <button class="delete-stock-button blind" data-id=${stock.id}>
+                    <img src="src/images/delete-button.svg" class="delete-stock-button blind" data-id=${stock.id}></img>
                     </button>`,
                   `
                 </li>
@@ -258,7 +258,8 @@ export default class App {
 
       if (
         target.className === 'stock-list-item' ||
-        target.className === 'stock-list-item-title'
+        target.className === 'stock-list-item-title' ||
+        target.className === 'delete-stock-button blind'
       ) {
         this.setState({ ...this.state, stockId: target.dataset.id });
         this.navigate('item');
