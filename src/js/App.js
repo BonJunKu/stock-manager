@@ -350,7 +350,7 @@ export default class App {
     });
 
     function startTimer() {
-      this.timeoutId = setTimeout(callback, 5000);
+      this.timeoutId = setTimeout(callback, 3000);
     }
 
     function stopTimer() {
