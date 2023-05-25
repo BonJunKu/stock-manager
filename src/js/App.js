@@ -212,7 +212,7 @@ export default class App {
       }
 
       if (target.className === 'link-button') {
-        window.location.href = 'https://fireworks.js.org/';
+        window.location.href = 'https://firework-gold.vercel.app/';
       }
 
       if (target.className === 'home-edit-button') {
