@@ -3,6 +3,7 @@ import addCommasToNumber from './addCommasToNumber.js';
 export default class App {
   $target;
   state;
+  timeoutId;
 
   constructor(target) {
     this.$target = target;
@@ -211,10 +212,6 @@ export default class App {
         });
       }
 
-      if (target.className === 'link-button') {
-        window.location.href = 'https://firework-gold.vercel.app/';
-      }
-
       if (target.className === 'home-edit-button') {
         this.setState({ ...this.state, isEditing: !this.state.isEditing });
       }
@@ -351,6 +348,27 @@ export default class App {
         });
       }
     });
+
+    function startTimer() {
+      this.timeoutId = setTimeout(callback, 5000);
+    }
+
+    function stopTimer() {
+      clearTimeout(this.timeoutId);
+    }
+
+    function callback() {
+      window.location.href = 'https://firework-gold.vercel.app/';
+    }
+
+    const button = document.querySelector('.link-button');
+
+    button.addEventListener('mousedown', startTimer);
+    button.addEventListener('touchstart', startTimer);
+
+    button.addEventListener('mouseup', stopTimer);
+    button.addEventListener('touchend', stopTimer);
+    button.addEventListener('mouseout', stopTimer);
   }
 
   getSum() {
