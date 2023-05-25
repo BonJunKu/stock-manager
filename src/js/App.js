@@ -32,6 +32,9 @@ export default class App {
     if (this.state.page === 'home') {
       this.$target.innerHTML = `
             <div class="topbar">
+            <button class="link-button">${
+              this.state.isEditing ? '?' : ''
+            }</button>
             <span class="spacing"></span>
               <button class="home-edit-button">${
                 this.state.isEditing ? '완료' : '편집'
@@ -206,6 +209,10 @@ export default class App {
             newStock,
           ],
         });
+      }
+
+      if (target.className === 'link-button') {
+        window.location.href = 'https://fireworks.js.org/';
       }
 
       if (target.className === 'home-edit-button') {
