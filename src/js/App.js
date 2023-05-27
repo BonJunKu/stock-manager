@@ -273,7 +273,12 @@ export default class App {
           ),
         });
       }
+
+      if (target.className === 'link-button') {
+        window.location.href = 'https://firework-gold.vercel.app/';
+      }
     });
+
 
     document.addEventListener('keyup', ({ key }) => {
       if (
@@ -349,27 +354,6 @@ export default class App {
         });
       }
     });
-
-    function startTimer() {
-      this.timeoutId = setTimeout(callback, 3000);
-    }
-
-    function stopTimer() {
-      clearTimeout(this.timeoutId);
-    }
-
-    function callback() {
-      window.location.href = 'https://firework-gold.vercel.app/';
-    }
-
-    const button = document.querySelector('.link-button');
-
-    button.addEventListener('mousedown', startTimer);
-    button.addEventListener('touchstart', startTimer);
-
-    button.addEventListener('mouseup', stopTimer);
-    button.addEventListener('touchend', stopTimer);
-    button.addEventListener('mouseout', stopTimer);
   }
 
   getSum() {
